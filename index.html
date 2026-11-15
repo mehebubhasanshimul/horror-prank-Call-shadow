@@ -47,29 +47,30 @@ button:disabled{opacity:0.45;cursor:not-allowed;border-color:#555;background:#1a
 footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;color:#8d7d87;font-size:.78rem}
 .credit{display:inline-block;border:1px solid var(--green);border-radius:30px;padding:11px 22px;color:white;letter-spacing:.12em;box-shadow:0 0 18px #00ff6640}.credit b{color:var(--green)}
 
-/* CALL OVERLAY, GIF & ASCII EYE */
-#callOverlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;text-align:center;padding:18px;background:rgba(2,0,4,.96);backdrop-filter:blur(14px)}
+/* FULL SCREEN CALL OVERLAY & LARGE GIF */
+#callOverlay{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(2,0,4,.98);backdrop-filter:blur(16px);padding:10px}
 #callOverlay.active{display:flex}
-.callbox{width:min(480px,100%);border:1px solid var(--red);border-radius:18px;padding:20px 18px;background:linear-gradient(160deg,#17020a,#030205);box-shadow:0 0 60px #8b001d;position:relative;overflow:hidden}
-.ascii-eye{font-family:monospace;font-size:10px;line-height:1.05;color:#ff1744;text-shadow:0 0 10px #ff002b,0 0 20px #ff002b;margin:0 auto 10px;white-space:pre;user-select:none;font-weight:bold}
-.gif-container{width:100%;height:190px;border-radius:10px;overflow:hidden;border:1px solid #8e102c;margin:10px 0;background:#000;position:relative;box-shadow:inset 0 0 20px #000}
-.gif-container img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) brightness(0.85) saturate(1.3)}
-.gif-glitch{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,0,40,.1) 0 2px,transparent 2px 4px);pointer-events:none}
-.callbox h2{color:var(--red);letter-spacing:.16em;margin:8px 0;font-size:1.3rem}
-.callbox p{color:#d9cbd3;line-height:1.5;font-size:.86rem;margin:6px 0}
-#endCall{width:100%;background:#a00024;border-color:#ff5473;margin-top:12px;font-weight:bold;letter-spacing:.08em}
-#sceneLabel{color:var(--green);font-size:.7rem;letter-spacing:.16em}
+.callbox{width:100%;max-width:540px;height:100%;max-height:92vh;border:2px solid var(--red);border-radius:20px;padding:16px;background:linear-gradient(160deg,#17020a,#030205);box-shadow:0 0 80px #8b001d;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.ascii-eye{font-family:monospace;font-size:11px;line-height:1.05;color:#ff1744;text-shadow:0 0 12px #ff002b;margin:0 auto;white-space:pre;user-select:none;font-weight:bold;text-align:center}
+.gif-container{width:100%;flex-grow:1;max-height:42vh;border-radius:12px;overflow:hidden;border:1px solid #8e102c;margin:8px 0;background:#000;position:relative;box-shadow:inset 0 0 25px #000}
+.gif-container img{width:100%;height:100%;object-fit:cover;filter:contrast(1.3) brightness(0.9) saturate(1.4)}
+.gif-glitch{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,0,40,.12) 0 2px,transparent 2px 4px);pointer-events:none}
+.callbox h2{color:var(--red);letter-spacing:.16em;margin:4px 0;font-size:1.4rem;text-align:center}
+.callbox p{color:#d9cbd3;line-height:1.4;font-size:.88rem;margin:4px 0;text-align:center}
+#endCall{width:100%;background:#a00024;border-color:#ff5473;margin-top:8px;font-weight:bold;letter-spacing:.08em;padding:14px;font-size:0.95rem}
+#sceneLabel{color:var(--green);font-size:.72rem;letter-spacing:.16em;text-align:center}
 
-/* LIGHT FLICKER EFFECT */
-.flicker-screen{animation:horrorFlicker 0.14s infinite alternate}
+/* INTENSE LIGHT FLICKER EFFECT */
+.flicker-screen{animation:horrorFlicker 0.12s infinite alternate}
 @keyframes horrorFlicker{
   0%{filter:brightness(1) contrast(1);background-color:#050307}
-  25%{filter:brightness(2.2) contrast(1.8) hue-rotate(-15deg);background-color:#2b0009}
-  50%{filter:brightness(0.3) contrast(2);background-color:#000000}
-  75%{filter:brightness(1.8) invert(0.12);background-color:#1f0006}
-  100%{filter:brightness(0.8) contrast(1.4);background-color:#050307}
+  20%{filter:brightness(2.4) contrast(1.9) hue-rotate(-20deg);background-color:#33000b}
+  40%{filter:brightness(0.25) contrast(2.2);background-color:#000000}
+  60%{filter:brightness(2.0) invert(0.15);background-color:#240008}
+  80%{filter:brightness(0.6) contrast(1.5);background-color:#0a0103}
+  100%{filter:brightness(1.5) contrast(1.7);background-color:#1a0004}
 }
-@media(max-width:520px){header{min-height:64vh}.card{padding:17px}.soundlist button{padding:9px 5px;font-size:.7rem}.ascii-eye{font-size:8.5px}.gif-container{height:165px}}
+@media(max-width:520px){header{min-height:64vh}.card{padding:17px}.soundlist button{padding:9px 5px;font-size:.7rem}.ascii-eye{font-size:9.5px}.callbox{max-height:96vh;padding:12px}}
 </style>
 </head>
 <body>
@@ -142,22 +143,26 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
  <p>FICTIONAL HORROR EXPERIENCE • EXIT IS ALWAYS AVAILABLE</p>
 </footer>
 
-<!-- ইনকামিং কল স্ক্রিন (ASCII EYE + GIPHY HORROR + LOCKED END BUTTON) -->
+<!-- ফুল স্ক্রিন ইনকামিং কল ওভারলে -->
 <div id="callOverlay" role="dialog" aria-modal="true" aria-labelledby="callTitle">
  <div class="callbox">
-  <pre class="ascii-eye" id="asciiEye"></pre>
-  <div id="sceneLabel">INCOMING SIGNAL DETECTED</div>
+  <div>
+   <pre class="ascii-eye" id="asciiEye"></pre>
+   <div id="sceneLabel">INCOMING SIGNAL DETECTED</div>
+  </div>
   <div class="gif-container">
-   <img id="horrorGif" src="https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif" alt="Horror Entity">
+   <img id="horrorGif" src="https://giphy.com/gifs/art-horror-loop-l4FGmk6EVlfzvGscE" alt="Horror Entity">
    <div class="gif-glitch"></div>
   </div>
-  <h2 id="callTitle">666 — CONNECTED</h2>
-  <p id="callDialogue">“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”</p>
-  <button id="endCall" disabled>🔒 SYSTEM LOCKED (10s)</button>
+  <div>
+   <h2 id="callTitle">666 — CONNECTED</h2>
+   <p id="callDialogue">“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”</p>
+   <button id="endCall" disabled>🔒 SYSTEM LOCKED (60s)</button>
+  </div>
  </div>
 </div>
 
-<!-- আপনার গিটহাব রিপোজিটরির আসল ফাইল নাম অনুযায়ী অডিও সোর্স (.mp3.mp3) -->
+<!-- অডিও সোর্স -->
 <audio id="audioAahat" preload="auto" src="./Aahat_Horror_Ringtone.mp3.mp3"></audio>
 <audio id="audioChudail" preload="auto" src="./CHUDAIL_KI_HASNE_WALI.mp3.mp3"></audio>
 <audio id="audioPayal" preload="auto" src="./horror_ringtone___payal.mp3.mp3"></audio>
@@ -168,7 +173,7 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
  'use strict';
  const $ = id => document.getElementById(id);
 
- /* === ১. BACKGROUND CANVAS ANIMATION === */
+ /* === ব্যাকগ্রাউন্ড ক্যানভাস অ্যানিমেশন === */
  const canvas=$('scene'), ctx=canvas.getContext('2d');
  let W=0,H=0,raf=0,visualOn=true,frame=0;
  const rand=(a,b)=>Math.random()*(b-a)+a;
@@ -211,7 +216,7 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
  }
  render();
 
- /* === ২. ASCII EYE ANIMATION === */
+ /* === ASCII রিয়েল কোডিং চোখ অ্যানিমেশন === */
  const eyeFrames = [
 `      . - ~ ~ ~ - .
    .-'   _ . - . _   '-.
@@ -243,7 +248,7 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
   $('asciiEye').textContent = eyeFrames[eyeIndex];
  }, 450);
 
- /* === ৩. AUDIO SYSTEM + BACKUP HORROR SYNTH === */
+ /* === অডিও সিস্টেম ও ফলব্যাক সিন্থ === */
  const audios=[$('audioAahat'), $('audioChudail'), $('audioPayal'), $('audioNewHorror')];
  let masterVolume=.80;
  let audioCtx=null, synthOsc=null;
@@ -314,12 +319,12 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
  $('volume').addEventListener('input',e=>{masterVolume=Number(e.target.value)/100;$('volValue').textContent=e.target.value+'%';audios.forEach(a=>a.volume=masterVolume)});
  $('stopBtn').addEventListener('click',stopAll);
 
- /* === ৪. HORROR CALL, GIPHY ROTATION, VIBRATION, FLICKER & END BUTTON LOCK === */
+ /* === কল, জিফি রোটেশন, ভাইব্রেশন, ফ্লিকার এবং ১ মিনিটের লক সিস্টেম === */
  const horrorGifs = [
-  "https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif",
-  "https://media.giphy.com/media/3oKIPc8HP4TjyykkKc/giphy.gif",
-  "https://media.giphy.com/media/cYqhkF6jUFXvHfnOt4/giphy.gif",
-  "https://media.giphy.com/media/RpiTpzfosgJyaWH63N/giphy.gif"
+  "https://giphy.com/gifs/art-horror-loop-l4FGmk6EVlfzvGscE",
+  "https://giphy.com/gifs/art-horror-loop-3oKIPc8HP4TjyykkKc",
+  "https://giphy.com/gifs/scary-ghost-spooky-cYqhkF6jUFXvHfnOt4",
+  "https://giphy.com/gifs/amc-tv-amc-networks-fearfest-RpiTpzfosgJyaWH63N"
  ];
  const dialogues=[
   '“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”',
@@ -353,10 +358,8 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
   $('callDialogue').textContent=dialogues[0];
   $('horrorGif').src = horrorGifs[0];
 
-  // অডিও প্লে (লুপসহ)
   playAudio($('audioChudail'), '666 Cursed Call', true);
 
-  // ক্রমাগত ফোন ভাইব্রেশন
   if(navigator.vibrate){
    navigator.vibrate([400, 150, 500, 200, 300]);
    $('vibeState').textContent='VIBRATION: EXTREME';
@@ -366,7 +369,6 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
    }, 1300);
   }
 
-  // ডায়ালগ পরিবর্তন
   let dIdx = 1;
   clearInterval(dialogueTimer);
   dialogueTimer = setInterval(()=>{
@@ -375,7 +377,6 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
    dIdx++;
   }, 3500);
 
-  // ৪টি GIF একের পর এক পরিবর্তন
   let gIdx = 1;
   clearInterval(gifTimer);
   gifTimer = setInterval(()=>{
@@ -384,15 +385,15 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
    gIdx++;
   }, 3000);
 
-  // END বাটন ১০ সেকেন্ডের জন্য লক করা
-  let lockSeconds = 10;
+  /* ১ মিনিটের (৬০ সেকেন্ড) জন্য এন্ড বাটন লক সিস্টেম */
+  let lockSeconds = 60;
   endBtn.disabled = true;
-  endBtn.textContent = `🔒 END CALL LOCKED (${lockSeconds}s)`;
+  endBtn.textContent = `🔒 SYSTEM LOCKED (${lockSeconds}s)`;
   clearInterval(lockTimer);
   lockTimer = setInterval(()=>{
    lockSeconds--;
    if(lockSeconds > 0){
-    endBtn.textContent = `🔒 END CALL LOCKED (${lockSeconds}s)`;
+    endBtn.textContent = `🔒 SYSTEM LOCKED (${lockSeconds}s)`;
    } else {
     clearInterval(lockTimer);
     endBtn.disabled = false;
