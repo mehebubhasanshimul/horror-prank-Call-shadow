@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#050307">
+<title>666 — SHADOW JOKER | Ultimate Horror & Recovery Experience</title>
+<style>
+:root{--red:#ff1744;--red2:#7d001b;--green:#8cffb1;--cyan:#72f7ff;--bg:#050307;--glass:rgba(10,5,12,.82)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#f5edf2;font-family:Consolas,monospace;overflow-x:hidden}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:-3}
+body:before{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,.88) 100%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+body:after{content:"";position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.16;background:linear-gradient(transparent 50%,rgba(255,0,40,.12) 51%);background-size:100% 5px}
+header{min-height:76vh;display:grid;place-items:center;text-align:center;padding:90px 18px 60px;position:relative;overflow:hidden;border-bottom:1px solid #8e102c}
+header:before{content:"";position:absolute;width:min(78vw,570px);aspect-ratio:1;border:1px solid #a10c2e;transform:rotate(45deg);box-shadow:0 0 35px #8e001f,inset 0 0 45px #40000d;animation:rotate 30s linear infinite}
+header:after{content:"";position:absolute;width:min(55vw,390px);aspect-ratio:1;border:1px solid rgba(255,0,55,.5);transform:rotate(45deg);animation:rotate 18s linear infinite reverse}
+@keyframes rotate{to{transform:rotate(405deg)}}
+.hero{position:relative;z-index:2}.sigil{font-size:clamp(3rem,12vw,7rem);color:#ff1744;text-shadow:0 0 12px #f03,0 0 45px #a00025;animation:pulse 2.6s infinite}
+@keyframes pulse{50%{text-shadow:0 0 25px #f03,0 0 90px #f03;filter:brightness(1.5)}}
+h1{font-size:clamp(2rem,7vw,4.5rem);letter-spacing:.14em;margin:8px 0;text-shadow:0 0 18px #ff1744}
+.subtitle{color:var(--green);letter-spacing:.2em;font-size:.78rem}.tag{margin:20px auto 0;color:#c8b9c2;font-size:.8rem;letter-spacing:.12em}
+main{width:min(1150px,calc(100% - 28px));margin:26px auto 70px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.card{background:var(--glass);border:1px solid rgba(255,23,68,.42);border-radius:14px;padding:20px;box-shadow:0 12px 45px #000,inset 0 0 25px rgba(255,0,45,.04);backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--red);box-shadow:0 0 15px var(--red)}
+.card h2{font-size:1rem;color:var(--green);letter-spacing:.08em;margin:0 0 14px}
+.muted{color:#a99ba5;font-size:.82rem;line-height:1.6}
+.display{background:#020103;border:1px solid #8e102c;border-radius:10px;padding:20px;text-align:center;margin:14px 0;box-shadow:inset 0 0 25px #39000c}
+.number{font-size:clamp(2rem,8vw,3.2rem);color:var(--red);letter-spacing:.22em;text-shadow:0 0 18px #f03}
+.status{font-size:.75rem;color:var(--green);margin-top:8px;min-height:18px}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+button{font:inherit;cursor:pointer;color:#fff;border:1px solid rgba(255,23,68,.5);background:rgba(255,0,45,.09);border-radius:8px;padding:12px;transition:.18s}
+button:hover{background:rgba(255,0,45,.28);box-shadow:0 0 18px rgba(255,0,45,.25)}
+button:active{transform:scale(.97)}
+.actions{display:flex;gap:10px;margin-top:12px}.primary{flex:2;background:linear-gradient(90deg,#8b001e,#f01442);font-weight:bold}.secondary{flex:1}
+.soundlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.soundlist button{font-size:.78rem;min-height:56px}
+.soundlist .wide{grid-column:1/-1}
+.level{display:flex;align-items:center;gap:10px;margin:12px 0;color:#c9bac3;font-size:.8rem}.level input{width:100%;accent-color:var(--red)}
+.monster-status{display:flex;justify-content:space-between;color:#9f909a;font-size:.75rem;margin-top:12px}
+.service-list{list-style:none;padding:0;margin:0 0 14px}
+.service-list li{padding:8px 10px;margin-bottom:8px;background:rgba(255,0,45,.06);border-left:3px solid var(--red);font-size:.82rem;display:flex;justify-content:space-between;align-items:center}
+.service-list li span{color:var(--green);font-size:.72rem;border:1px solid var(--green);padding:2px 6px;border-radius:4px}
+.whatsapp-btn{display:block;width:100%;background:#25d366;color:#000;text-align:center;padding:12px;font-weight:bold;text-decoration:none;border-radius:8px;margin-top:12px;box-shadow:0 0 15px rgba(37,211,102,.3);transition:.2s}
+.whatsapp-btn:hover{background:#22bf5b;box-shadow:0 0 25px rgba(37,211,102,.6)}
+footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;color:#8d7d87;font-size:.78rem}
+.credit{display:inline-block;border:1px solid var(--green);border-radius:30px;padding:11px 22px;color:white;letter-spacing:.12em;box-shadow:0 0 18px #00ff6640}.credit b{color:var(--green)}
+#callOverlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;background:rgba(2,0,4,.96);backdrop-filter:blur(14px)}
+#callOverlay.active{display:flex}.callbox{width:min(480px,100%);border:1px solid var(--red);border-radius:18px;padding:28px 20px;background:linear-gradient(160deg,#17020a,#030205);box-shadow:0 0 60px #8b001d}
+.avatar{font-size:4.5rem;animation:float 2.5s ease-in-out infinite;text-shadow:0 0 30px #f03}
+@keyframes float{50%{transform:translateY(-10px) rotate(4deg)}}
+.callbox h2{color:var(--red);letter-spacing:.18em}.callbox p{color:#d9cbd3;line-height:1.6;font-size:.9rem}
+#endCall{width:100%;background:#a00024;border-color:#ff5473;margin-top:12px;font-weight:bold}
+#sceneLabel{color:var(--green);font-size:.7rem;letter-spacing:.16em}
+.flash{animation:flash .22s 2}@keyframes flash{50%{filter:brightness(2) hue-rotate(35deg)}}
+@media(max-width:520px){header{min-height:64vh}.card{padding:17px}.soundlist button{padding:9px 5px;font-size:.7rem}}
+</style>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas>
+<header>
+ <div class="hero">
+  <div class="sigil">◉</div>
+  <h1>666 CURSED SIGNAL</h1>
+  <div class="subtitle">SHADOW JOKER • THE HAUNTED FREQUENCY</div>
+  <p class="tag">THE SHADOWS ARE WATCHING — ENTER IF YOU WISH</p>
+ </div>
+</header>
+<main>
+ <div class="grid">
+  <!-- ১. কার্সড হটলাইন কল সিমুলেটর -->
+  <section class="card">
+   <h2>☎ CURSED HOTLINE</h2>
+   <p class="muted">একটি কাল্পনিক হরর কল ও সিকিউরিটি সিমুলেশন।</p>
+   <div class="display"><div class="number" id="dialDisplay">666</div><div class="status" id="status">SYSTEM STANDBY</div></div>
+   <div class="keypad">
+    <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+    <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+    <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+    <button data-key="*">*</button><button data-key="0">0</button><button id="clear">CLEAR</button>
+   </div>
+   <div class="actions"><button class="primary" id="callBtn">☏ START HORROR CALL</button><button class="secondary" id="stopBtn">■ STOP</button></div>
+   <div class="monster-status"><span>SIMULATION MODE</span><span id="vibeState">VIBRATION: OFF</span></div>
+  </section>
+
+  <!-- ২. SHADOW JOKER রিকভারি সার্ভিস ও হোয়াটসঅ্যাপ যোগাযোগ প্যানেল -->
+  <section class="card">
+   <h2>🛠️ SHADOW JOKER SERVICES</h2>
+   <p class="muted">ডিজিটাল ও অনলাইন সিকিউরিটি সমস্যা সমাধানে আমাদের অফিশিয়াল সার্ভিস:</p>
+   <ul class="service-list">
+    <li>ডিজেবল ফেসবুক আইডি রিকভারি <span>ACTIVE</span></li>
+    <li>নষ্ট বা ব্যানড হোয়াটসঅ্যাপ রিকভারি <span>ACTIVE</span></li>
+    <li>জিমেইল অ্যাকাউন্ট রিকভারি <span>SECURE</span></li>
+    <li>অনলাইন যেকোনো সিকিউরিটি সমস্যা <span>24/7 SUPPORT</span></li>
+   </ul>
+   <a href="https://wa.me/" target="_blank" class="whatsapp-btn">
+    💬 হোয়াটসঅ্যাপে মেসেজ দিন (WhatsApp)
+   </a>
+  </section>
+
+  <!-- ৩. আপনার নিজস্ব অডিও ফাইলগুলোর সাউন্ড চেম্বার -->
+  <section class="card">
+   <h2>♫ HORROR SOUND CHAMBER</h2>
+   <p class="muted">আপনার আপলোড করা রিয়েল হরর অডিও ফাইলগুলো এখান থেকে প্লে করুন।</p>
+   <div class="soundlist">
+    <button data-sound="muskane">🎵 Muskane Jhuti Hai</button>
+    <button data-sound="aahat">👻 Aahat Horror Ringtone</button>
+    <button data-sound="chudail">😈 Chudail Ki Hasne Wali</button>
+    <button data-sound="payal">🔔 Payal Horror Ringtone</button>
+    <button class="wide" data-sound="newhorror">💀 New Horror Ringtone</button>
+    <button class="wide" id="musicToggle">♫ Background Ambience: OFF</button>
+   </div>
+   <label class="level">VOLUME <input id="volume" type="range" min="0" max="100" value="65"><span id="volValue">65%</span></label>
+  </section>
+
+  <!-- ৪. লাইভ এনটিটি ফিল্ড -->
+  <section class="card">
+   <h2>◈ LIVE ENTITY FIELD</h2>
+   <p class="muted">ক্যানভাসে ১২টি আলাদা ছায়ামূর্তি, চোখের ঝলক ও প্রতীক ঘুরে বেড়ায় রহস্যময় আবহ তৈরি করতে।</p>
+   <div class="display"><div class="number" style="font-size:1.6rem;letter-spacing:.12em">12 ENTITIES</div><div class="status" id="entityStatus">FIELD ACTIVE</div></div>
+   <button id="fxToggle" style="width:100%">PAUSE / RESUME VISUAL FX</button>
+  </section>
+ </div>
+</main>
+<footer>
+ <div class="credit">CREATED & POWERED BY <b>SHADOW JOKER</b></div>
+ <p>FICTIONAL HORROR EXPERIENCE • EXIT IS ALWAYS AVAILABLE</p>
+</footer>
+
+<div id="callOverlay" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+ <div class="callbox">
+  <div class="avatar">👁️</div><div id="sceneLabel">INCOMING SIGNAL DETECTED</div>
+  <h2 id="callTitle">666 — CONNECTED</h2>
+  <p id="callDialogue">“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”</p>
+  <p class="muted">এটি একটি সিমুলেশন। চাইলে এখনই কল শেষ করতে পারবেন।</p>
+  <button id="endCall">■ END CALL — EXIT SAFELY</button>
+ </div>
+</div>
+
+<!-- আপনার গিটহাবে আপলোডকৃত অডিও ফাইলগুলোর সঠিক নাম অনুযায়ী সোর্স -->
+<audio id="audioMuskane" preload="none" src="Muskane_Jhuti_Hai_background.mp3"></audio>
+<audio id="audioAahat" preload="none" src="Aahat_Horror_Ringtone.mp3"></audio>
+<audio id="audioChudail" preload="none" src="CHUDAIL_KI_HASNE_WALI.mp3"></audio>
+<audio id="audioPayal" preload="none" src="horror_ringtone___payal.mp3"></audio>
+<audio id="audioNewHorror" preload="none" src="New_Horror_____Ringtone.mp3"></audio>
+
+<script>
+(() => {
+ 'use strict';
+ const $ = id => document.getElementById(id);
+ const canvas=$('scene'), ctx=canvas.getContext('2d');
+ let W=0,H=0,raf=0,visualOn=true,frame=0;
+ const rand=(a,b)=>Math.random()*(b-a)+a;
+ const entities=Array.from({length:12},(_,i)=>({x:rand(.04,.96),y:rand(.12,.94),s:rand(.55,1.45),phase:rand(0,6.28),speed:rand(.15,.55),kind:i%4}));
+ const motes=Array.from({length:90},()=>({x:Math.random(),y:Math.random(),r:rand(.5,2),v:rand(.00015,.00065),a:rand(.15,.65)}));
+ function resize(){const d=Math.min(devicePixelRatio||1,1.7);W=innerWidth;H=innerHeight;canvas.width=Math.floor(W*d);canvas.height=Math.floor(H*d);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(d,0,0,d,0,0)}
+ addEventListener('resize',resize);resize();
+ function drawEntity(e,t){
+  const x=e.x*W+Math.sin(t*e.speed+e.phase)*18, y=e.y*H+Math.cos(t*.35+e.phase)*13, s=e.s;
+  ctx.save();ctx.translate(x,y);ctx.scale(s,s);
+  const g=ctx.createRadialGradient(0,-15,4,0,0,76);g.addColorStop(0,'rgba(75,0,22,.55)');g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,0,76,105,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(1,0,3,.91)';ctx.strokeStyle='rgba(120,0,29,.38)';ctx.lineWidth=2;
+  if(e.kind===0){
+   ctx.beginPath();ctx.moveTo(-42,75);ctx.quadraticCurveTo(-58,-20,-22,-61);ctx.quadraticCurveTo(0,-91,27,-59);ctx.quadraticCurveTo(58,-10,43,75);ctx.quadraticCurveTo(0,99,-42,75);ctx.fill();ctx.stroke();
+   ctx.fillStyle='#ff183e';ctx.shadowColor='#ff002b';ctx.shadowBlur=14;ctx.fillRect(-19,-28,10,4);ctx.fillRect(10,-28,10,4);
+  } else if(e.kind===1){
+   ctx.beginPath();ctx.moveTo(-42,-22);ctx.lineTo(-67,-72);ctx.lineTo(-25,-52);ctx.quadraticCurveTo(0,-82,25,-52);ctx.lineTo(67,-72);ctx.lineTo(42,-18);ctx.lineTo(35,58);ctx.quadraticCurveTo(0,83,-35,58);ctx.closePath();ctx.fill();ctx.stroke();
+   ctx.fillStyle='#ff3b55';ctx.shadowColor='#f03';ctx.shadowBlur=12;ctx.fillRect(-23,-17,13,5);ctx.fillRect(10,-17,13,5);
+  } else if(e.kind===2){
+   ctx.beginPath();ctx.moveTo(-34,-50);ctx.quadraticCurveTo(0,-90,34,-50);ctx.lineTo(48,30);ctx.lineTo(24,18);ctx.lineTo(18,90);ctx.lineTo(0,55);ctx.lineTo(-20,91);ctx.lineTo(-24,18);ctx.lineTo(-48,35);ctx.closePath();ctx.fill();ctx.stroke();
+   ctx.fillStyle='#9dfcff';ctx.shadowColor='#72f7ff';ctx.shadowBlur=10;ctx.fillRect(-17,-28,8,4);ctx.fillRect(9,-28,8,4);
+  } else {
+   ctx.beginPath();ctx.ellipse(0,-14,38,47,0,0,Math.PI*2);ctx.fill();ctx.fillRect(-28,18,56,44);
+   ctx.fillStyle='#ff2148';ctx.shadowColor='#f03';ctx.shadowBlur=14;ctx.beginPath();ctx.ellipse(-14,-15,8,12,0,0,Math.PI*2);ctx.ellipse(14,-15,8,12,0,0,Math.PI*2);ctx.fill();
+   ctx.shadowBlur=0;ctx.fillStyle='#050307';ctx.fillRect(-17,29,34,8);
+  }
+  ctx.restore();
+ }
+ function render(){
+  if(!visualOn){raf=requestAnimationFrame(render);return}
+  frame++;const t=frame/60;ctx.clearRect(0,0,W,H);
+  const bg=ctx.createRadialGradient(W*.5,H*.5,0,W*.5,H*.5,Math.max(W,H)*.7);bg.addColorStop(0,'rgba(32,0,12,.14)');bg.addColorStop(1,'rgba(0,0,0,.1)');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  motes.forEach(p=>{p.y-=p.v*60;if(p.y<0)p.y=1;ctx.globalAlpha=p.a;ctx.fillStyle='#ff244c';ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r,0,7);ctx.fill()});ctx.globalAlpha=1;
+  entities.forEach(e=>drawEntity(e,t));
+  ctx.save();ctx.translate(W/2,H*.53);ctx.rotate(t*.12);ctx.strokeStyle='rgba(255,25,66,.15)';ctx.lineWidth=1;
+  const r=Math.min(W,H)*.22;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.86,r*.5);ctx.lineTo(-r*.86,r*.5);ctx.closePath();ctx.stroke();
+  ctx.beginPath();ctx.arc(0,0,r*.55,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.ellipse(0,0,r*.42,r*.19,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(255,20,60,.35)';ctx.beginPath();ctx.arc(0,0,4+Math.sin(t*2)*2,0,7);ctx.fill();ctx.restore();
+  raf=requestAnimationFrame(render);
+ }
+ render();
+
+ const audios=[$('audioMuskane'), $('audioAahat'), $('audioChudail'), $('audioPayal'), $('audioNewHorror')];
+ let masterVolume=.65;
+ function stopAll(){audios.forEach(a=>{a.pause();a.currentTime=0});if(window.speechSynthesis)window.speechSynthesis.cancel();$('status').textContent='ALL AUDIO STOPPED';$('musicToggle').textContent='♫ Background Ambience: OFF'}
+ async function playAudio(audioEl, name){
+  stopAll();
+  audioEl.volume=masterVolume;
+  try{
+   await audioEl.play();
+   $('status').textContent='PLAYING: '+name;
+  }catch(e){
+   $('status').textContent='AUDIO BLOCKED — TAP PLAY AGAIN';
+  }
+ }
+ document.querySelectorAll('[data-key]').forEach(b=>b.addEventListener('click',()=>{let v=$('dialDisplay').textContent;if(v.length<12)$('dialDisplay').textContent=(v==='666'?'':v)+b.dataset.key}));
+ $('clear').addEventListener('click',()=>$('dialDisplay').textContent='');
+
+ document.querySelectorAll('[data-sound]').forEach(b=>b.addEventListener('click',()=>{
+  const s=b.dataset.sound;
+  if(s==='muskane') playAudio($('audioMuskane'), 'Muskane Jhuti Hai');
+  else if(s==='aahat') playAudio($('audioAahat'), 'Aahat Horror Ringtone');
+  else if(s==='chudail') playAudio($('audioChudail'), 'Chudail Ki Hasne Wali');
+  else if(s==='payal') playAudio($('audioPayal'), 'Payal Ringtone');
+  else if(s==='newhorror') playAudio($('audioNewHorror'), 'New Horror Ringtone');
+ }));
+
+ $('musicToggle').addEventListener('click',async()=>{
+  const a=$('audioMuskane');
+  if(!a.paused){
+   a.pause();
+   $('musicToggle').textContent='♫ Background Ambience: OFF';
+  }else{
+   try{a.volume=masterVolume;await a.play();$('musicToggle').textContent='♫ Background Ambience: ON'}catch(e){$('status').textContent='TAP AGAIN TO ALLOW AUDIO'}
+  }
+ });
+
+ $('volume').addEventListener('input',e=>{masterVolume=Number(e.target.value)/100;$('volValue').textContent=e.target.value+'%';audios.forEach(a=>a.volume=masterVolume)});
+ $('stopBtn').addEventListener('click',stopAll);
+
+ let vibeTimer=null;
+ const dialogues=['“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”','“Shadow Joker সিকিউরিটি লাইনে আপনাকে স্বাগতম।”','“সংযোগ বিচ্ছিন্ন হওয়ার আগে... সাহায্য নিতে হোয়াটসঅ্যাপে মেসেজ দিন।”'];
+ function endCall(){clearInterval(vibeTimer);if(navigator.vibrate)navigator.vibrate(0);$('vibeState').textContent='VIBRATION: OFF';$('callOverlay').classList.remove('active');document.body.classList.remove('flash');stopAll();$('status').textContent='CALL ENDED — SAFE EXIT'}
+ $('callBtn').addEventListener('click',()=>{
+  $('callOverlay').classList.add('active');$('status').textContent='SIMULATED CALL CONNECTED';$('callDialogue').textContent=dialogues[0];document.body.classList.add('flash');
+  if(navigator.vibrate){navigator.vibrate([180,100,180]);$('vibeState').textContent='VIBRATION: SHORT PULSE'}
+  playAudio($('audioChudail'), 'Chudail Call Simulation');
+  let i=1;clearInterval(vibeTimer);vibeTimer=setInterval(()=>{if(!$('callOverlay').classList.contains('active'))return;$('callDialogue').textContent=dialogues[i%dialogues.length];i++},4200);
+ });
+ $('endCall').addEventListener('click',endCall);
+ $('fxToggle').addEventListener('click',()=>{visualOn=!visualOn;$('entityStatus').textContent=visualOn?'FIELD ACTIVE':'FIELD PAUSED';if(visualOn)render()});
+ addEventListener('pagehide',()=>{endCall();cancelAnimationFrame(raf)});
+})();
+</script>
+</body>
+  </html>
