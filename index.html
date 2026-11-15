@@ -2,167 +2,626 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#050307">
-<title>666 — SHADOW JOKER | Ultimate Horror & Recovery Experience</title>
+<title>666 — SHADOW JOKER | PREMIUM HORROR EXPERIENCE</title>
 <style>
-:root{--red:#ff1744;--red2:#7d001b;--green:#8cffb1;--cyan:#72f7ff;--bg:#050307;--glass:rgba(10,5,12,.82)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#f5edf2;font-family:Consolas,monospace;overflow-x:hidden}
+:root{
+  --red:#ff1744;
+  --red2:#7d001b;
+  --green:#8cffb1;
+  --cyan:#72f7ff;
+  --bg:#050307;
+  --glass:rgba(8,2,10,.88);
+  --blood:#ff0033;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:#f5edf2;
+  font-family:'Courier New',Consolas,monospace;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ========== ACID / HORROR BACKGROUND GIF LAYER ========== */
+#bgHorror{
+  position:fixed;inset:0;z-index:-5;
+  background:#000;
+  overflow:hidden;
+}
+#bgHorror img{
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:.18;
+  filter:contrast(1.4) brightness(.55) saturate(1.6) hue-rotate(0deg);
+  animation:bgAcid 12s ease-in-out infinite alternate;
+}
+@keyframes bgAcid{
+  0%{filter:contrast(1.4) brightness(.5) saturate(1.5) hue-rotate(0deg)}
+  50%{filter:contrast(1.7) brightness(.7) saturate(2.2) hue-rotate(-25deg)}
+  100%{filter:contrast(1.3) brightness(.45) saturate(1.8) hue-rotate(15deg)}
+}
+
 #scene{position:fixed;inset:0;width:100%;height:100%;z-index:-3}
-body:before{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,.88) 100%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
-body:after{content:"";position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.16;background:linear-gradient(transparent 50%,rgba(255,0,40,.12) 51%);background-size:100% 5px}
-header{min-height:76vh;display:grid;place-items:center;text-align:center;padding:90px 18px 60px;position:relative;overflow:hidden;border-bottom:1px solid #8e102c}
-header:before{content:"";position:absolute;width:min(78vw,570px);aspect-ratio:1;border:1px solid #a10c2e;transform:rotate(45deg);box-shadow:0 0 35px #8e001f,inset 0 0 45px #40000d;animation:rotate 30s linear infinite}
-header:after{content:"";position:absolute;width:min(55vw,390px);aspect-ratio:1;border:1px solid rgba(255,0,55,.5);transform:rotate(45deg);animation:rotate 18s linear infinite reverse}
+
+/* Vignette + Scanlines */
+body:before{
+  content:"";position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:
+    radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.92) 100%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.22;
+  background:linear-gradient(transparent 50%,rgba(255,0,40,.14) 51%);
+  background-size:100% 4px;
+  animation:scanMove 8s linear infinite;
+}
+@keyframes scanMove{to{background-position:0 100%}}
+
+/* ========== HEADER ========== */
+header{
+  min-height:78vh;display:grid;place-items:center;text-align:center;
+  padding:90px 18px 50px;position:relative;overflow:hidden;
+  border-bottom:1px solid #8e102c;
+}
+header:before,header:after{
+  content:"";position:absolute;aspect-ratio:1;border:1px solid #a10c2e;
+  transform:rotate(45deg);pointer-events:none;
+}
+header:before{
+  width:min(78vw,570px);
+  box-shadow:0 0 40px #8e001f,inset 0 0 50px #40000d;
+  animation:rotate 28s linear infinite;
+}
+header:after{
+  width:min(52vw,370px);
+  border-color:rgba(255,0,55,.55);
+  animation:rotate 16s linear infinite reverse;
+}
 @keyframes rotate{to{transform:rotate(405deg)}}
-.hero{position:relative;z-index:2}.sigil{font-size:clamp(3rem,12vw,7rem);color:#ff1744;text-shadow:0 0 12px #f03,0 0 45px #a00025;animation:pulse 2.6s infinite}
-@keyframes pulse{50%{text-shadow:0 0 25px #f03,0 0 90px #f03;filter:brightness(1.5)}}
-h1{font-size:clamp(2rem,7vw,4.5rem);letter-spacing:.14em;margin:8px 0;text-shadow:0 0 18px #ff1744}
-.subtitle{color:var(--green);letter-spacing:.2em;font-size:.78rem}.tag{margin:20px auto 0;color:#c8b9c2;font-size:.8rem;letter-spacing:.12em}
-main{width:min(1150px,calc(100% - 28px));margin:26px auto 70px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
-.card{background:var(--glass);border:1px solid rgba(255,23,68,.42);border-radius:14px;padding:20px;box-shadow:0 12px 45px #000,inset 0 0 25px rgba(255,0,45,.04);backdrop-filter:blur(12px);position:relative;overflow:hidden}
-.card:before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--red);box-shadow:0 0 15px var(--red)}
-.card h2{font-size:1rem;color:var(--green);letter-spacing:.08em;margin:0 0 14px}
-.muted{color:#a99ba5;font-size:.82rem;line-height:1.6}
-.display{background:#020103;border:1px solid #8e102c;border-radius:10px;padding:20px;text-align:center;margin:14px 0;box-shadow:inset 0 0 25px #39000c}
-.number{font-size:clamp(2rem,8vw,3.2rem);color:var(--red);letter-spacing:.22em;text-shadow:0 0 18px #f03}
-.status{font-size:.75rem;color:var(--green);margin-top:8px;min-height:18px}
-.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-button{font:inherit;cursor:pointer;color:#fff;border:1px solid rgba(255,23,68,.5);background:rgba(255,0,45,.09);border-radius:8px;padding:12px;transition:.18s}
-button:hover:not(:disabled){background:rgba(255,0,45,.28);box-shadow:0 0 18px rgba(255,0,45,.25)}
-button:active:not(:disabled){transform:scale(.97)}
-button:disabled{opacity:0.45;cursor:not-allowed;border-color:#555;background:#1a050a}
-.actions{display:flex;gap:10px;margin-top:12px}.primary{flex:2;background:linear-gradient(90deg,#8b001e,#f01442);font-weight:bold}.secondary{flex:1}
-.soundlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.soundlist button{font-size:.78rem;min-height:56px}
+
+.hero{position:relative;z-index:2}
+.sigil{
+  font-size:clamp(3.2rem,13vw,7.5rem);
+  color:#ff1744;
+  text-shadow:0 0 15px #f03,0 0 50px #a00025,0 0 90px #600015;
+  animation:pulseSigil 2.4s ease-in-out infinite;
+}
+@keyframes pulseSigil{
+  0%,100%{text-shadow:0 0 15px #f03,0 0 50px #a00025;filter:brightness(1)}
+  50%{text-shadow:0 0 30px #ff1744,0 0 100px #ff0033,0 0 140px #ff1744;filter:brightness(1.6)}
+}
+
+/* GLITCH / ANIMATED TITLE */
+h1{
+  font-size:clamp(2.1rem,7.5vw,4.6rem);
+  letter-spacing:.16em;
+  margin:10px 0;
+  position:relative;
+  color:#fff;
+  text-shadow:0 0 20px #ff1744;
+  animation:titleGlow 3s ease-in-out infinite;
+}
+h1::before,h1::after{
+  content:"666 CURSED SIGNAL";
+  position:absolute;left:0;top:0;width:100%;
+  overflow:hidden;
+}
+h1::before{
+  color:#0ff;
+  z-index:-1;
+  animation:glitch1 2.8s infinite linear alternate-reverse;
+}
+h1::after{
+  color:#f0f;
+  z-index:-2;
+  animation:glitch2 3.2s infinite linear alternate-reverse;
+}
+@keyframes titleGlow{
+  0%,100%{text-shadow:0 0 18px #ff1744,0 0 40px #ff0033}
+  50%{text-shadow:0 0 28px #ff1744,0 0 70px #ff0033,0 0 100px #ff1744}
+}
+@keyframes glitch1{
+  0%{clip-path:inset(20% 0 60% 0);transform:translate(-3px,2px)}
+  20%{clip-path:inset(50% 0 20% 0);transform:translate(3px,-1px)}
+  40%{clip-path:inset(10% 0 70% 0);transform:translate(-2px,3px)}
+  60%{clip-path:inset(70% 0 5% 0);transform:translate(2px,-2px)}
+  80%{clip-path:inset(30% 0 40% 0);transform:translate(-3px,1px)}
+  100%{clip-path:inset(5% 0 80% 0);transform:translate(3px,2px)}
+}
+@keyframes glitch2{
+  0%{clip-path:inset(60% 0 15% 0);transform:translate(3px,-2px)}
+  25%{clip-path:inset(15% 0 55% 0);transform:translate(-3px,1px)}
+  50%{clip-path:inset(75% 0 8% 0);transform:translate(2px,3px)}
+  75%{clip-path:inset(35% 0 40% 0);transform:translate(-2px,-1px)}
+  100%{clip-path:inset(8% 0 70% 0);transform:translate(3px,2px)}
+}
+
+.subtitle{
+  color:var(--green);
+  letter-spacing:.22em;
+  font-size:.82rem;
+  animation:textPulse 2.5s ease-in-out infinite;
+}
+.tag{
+  margin:22px auto 0;
+  color:#c8b9c2;
+  font-size:.82rem;
+  letter-spacing:.14em;
+  animation:fadeInOut 4s ease-in-out infinite;
+}
+@keyframes textPulse{
+  0%,100%{opacity:.85;text-shadow:0 0 8px #8cffb1}
+  50%{opacity:1;text-shadow:0 0 18px #8cffb1,0 0 30px #00ff88}
+}
+@keyframes fadeInOut{
+  0%,100%{opacity:.6}
+  50%{opacity:1}
+}
+
+/* ========== MAIN CARDS ========== */
+main{width:min(1150px,calc(100% - 28px));margin:28px auto 80px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+
+.card{
+  background:var(--glass);
+  border:1px solid rgba(255,23,68,.45);
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 14px 50px #000,inset 0 0 30px rgba(255,0,45,.06);
+  backdrop-filter:blur(14px);
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 60px #000,0 0 40px rgba(255,0,50,.15);
+}
+.card:before{
+  content:"";position:absolute;left:0;top:0;width:3px;height:100%;
+  background:linear-gradient(to bottom,var(--red),#ff0033,#7d001b);
+  box-shadow:0 0 18px var(--red);
+  animation:borderPulse 2.8s ease-in-out infinite;
+}
+@keyframes borderPulse{
+  0%,100%{opacity:.7}
+  50%{opacity:1;box-shadow:0 0 25px #ff1744}
+}
+
+.card h2{
+  font-size:1.05rem;
+  color:var(--green);
+  letter-spacing:.1em;
+  margin:0 0 14px;
+  text-shadow:0 0 12px rgba(140,255,177,.4);
+}
+.muted{color:#a99ba5;font-size:.84rem;line-height:1.65}
+
+.display{
+  background:#020103;
+  border:1px solid #8e102c;
+  border-radius:12px;
+  padding:22px;
+  text-align:center;
+  margin:14px 0;
+  box-shadow:inset 0 0 30px #39000c;
+  position:relative;
+  overflow:hidden;
+}
+.display::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,20,60,.08),transparent);
+  animation:scan 3.5s linear infinite;
+}
+@keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.number{
+  font-size:clamp(2.1rem,8.5vw,3.4rem);
+  color:var(--red);
+  letter-spacing:.24em;
+  text-shadow:0 0 20px #f03,0 0 40px #ff0033;
+  animation:numberPulse 2s ease-in-out infinite;
+}
+@keyframes numberPulse{
+  0%,100%{text-shadow:0 0 18px #f03}
+  50%{text-shadow:0 0 30px #ff1744,0 0 55px #ff0033}
+}
+.status{font-size:.78rem;color:var(--green);margin-top:10px;min-height:20px;letter-spacing:.08em}
+
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+button{
+  font:inherit;cursor:pointer;color:#fff;
+  border:1px solid rgba(255,23,68,.55);
+  background:rgba(255,0,45,.1);
+  border-radius:9px;padding:13px;
+  transition:.18s;
+  position:relative;overflow:hidden;
+}
+button:hover:not(:disabled){
+  background:rgba(255,0,45,.32);
+  box-shadow:0 0 22px rgba(255,0,45,.35);
+  transform:translateY(-1px);
+}
+button:active:not(:disabled){transform:scale(.96)}
+button:disabled{opacity:.4;cursor:not-allowed;border-color:#444;background:#1a050a}
+
+.actions{display:flex;gap:11px;margin-top:14px}
+.primary{
+  flex:2;
+  background:linear-gradient(90deg,#8b001e,#f01442,#ff1744);
+  background-size:200% 100%;
+  font-weight:bold;
+  animation:btnShine 3s linear infinite;
+}
+@keyframes btnShine{0%{background-position:0%}100%{background-position:200%}}
+.secondary{flex:1}
+
+.soundlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.soundlist button{font-size:.8rem;min-height:58px}
 .soundlist .wide{grid-column:1/-1}
-.level{display:flex;align-items:center;gap:10px;margin:12px 0;color:#c9bac3;font-size:.8rem}.level input{width:100%;accent-color:var(--red)}
-.monster-status{display:flex;justify-content:space-between;color:#9f909a;font-size:.75rem;margin-top:12px}
-.service-list{list-style:none;padding:0;margin:0 0 14px}
-.service-list li{padding:8px 10px;margin-bottom:8px;background:rgba(255,0,45,.06);border-left:3px solid var(--red);font-size:.82rem;display:flex;justify-content:space-between;align-items:center}
-.service-list li span{color:var(--green);font-size:.72rem;border:1px solid var(--green);padding:2px 6px;border-radius:4px}
-.whatsapp-btn{display:block;width:100%;background:#25d366;color:#000;text-align:center;padding:12px;font-weight:bold;text-decoration:none;border-radius:8px;margin-top:12px;box-shadow:0 0 15px rgba(37,211,102,.3);transition:.2s}
-.whatsapp-btn:hover{background:#22bf5b;box-shadow:0 0 25px rgba(37,211,102,.6)}
-footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;color:#8d7d87;font-size:.78rem}
-.credit{display:inline-block;border:1px solid var(--green);border-radius:30px;padding:11px 22px;color:white;letter-spacing:.12em;box-shadow:0 0 18px #00ff6640}.credit b{color:var(--green)}
 
-/* FULL SCREEN CALL OVERLAY & LARGE GIF */
-#callOverlay{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(2,0,4,.98);backdrop-filter:blur(16px);padding:10px}
+.level{display:flex;align-items:center;gap:12px;margin:14px 0;color:#c9bac3;font-size:.82rem}
+.level input{width:100%;accent-color:var(--red)}
+
+.monster-status{display:flex;justify-content:space-between;color:#9f909a;font-size:.76rem;margin-top:14px}
+
+.service-list{list-style:none;padding:0;margin:0 0 16px}
+.service-list li{
+  padding:10px 12px;margin-bottom:9px;
+  background:rgba(255,0,45,.07);
+  border-left:3px solid var(--red);
+  font-size:.84rem;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:.2s;
+}
+.service-list li:hover{background:rgba(255,0,45,.14)}
+.service-list li span{
+  color:var(--green);font-size:.72rem;
+  border:1px solid var(--green);padding:3px 7px;border-radius:4px;
+  animation:badgePulse 2.2s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 transparent}50%{box-shadow:0 0 10px rgba(140,255,177,.4)}}
+
+.whatsapp-btn{
+  display:block;width:100%;
+  background:linear-gradient(90deg,#1da851,#25d366,#1da851);
+  background-size:200% 100%;
+  color:#000;text-align:center;padding:14px;
+  font-weight:bold;text-decoration:none;border-radius:10px;
+  margin-top:14px;
+  box-shadow:0 0 20px rgba(37,211,102,.35);
+  transition:.25s;
+  animation:waShine 4s linear infinite;
+}
+@keyframes waShine{0%{background-position:0%}100%{background-position:200%}}
+.whatsapp-btn:hover{box-shadow:0 0 35px rgba(37,211,102,.7);transform:translateY(-2px)}
+
+footer{
+  text-align:center;border-top:1px solid #7d1029;
+  padding:32px 14px 42px;color:#8d7d87;font-size:.8rem;
+}
+.credit{
+  display:inline-block;
+  border:1px solid var(--green);
+  border-radius:40px;
+  padding:12px 26px;
+  color:#fff;letter-spacing:.14em;
+  box-shadow:0 0 22px rgba(0,255,102,.25);
+  animation:creditGlow 3s ease-in-out infinite;
+}
+.credit b{color:var(--green)}
+@keyframes creditGlow{
+  0%,100%{box-shadow:0 0 18px rgba(0,255,102,.2)}
+  50%{box-shadow:0 0 32px rgba(0,255,102,.45)}
+}
+
+/* ========== CALL OVERLAY — PREMIUM ========== */
+#callOverlay{
+  position:fixed;inset:0;z-index:30;
+  display:none;align-items:center;justify-content:center;
+  text-align:center;padding:16px;
+  background:rgba(1,0,3,.97);
+  backdrop-filter:blur(18px);
+}
 #callOverlay.active{display:flex}
-.callbox{width:100%;max-width:540px;height:100%;max-height:92vh;border:2px solid var(--red);border-radius:20px;padding:16px;background:linear-gradient(160deg,#17020a,#030205);box-shadow:0 0 80px #8b001d;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.ascii-eye{font-family:monospace;font-size:11px;line-height:1.05;color:#ff1744;text-shadow:0 0 12px #ff002b;margin:0 auto;white-space:pre;user-select:none;font-weight:bold;text-align:center}
-.gif-container{width:100%;flex-grow:1;max-height:42vh;border-radius:12px;overflow:hidden;border:1px solid #8e102c;margin:8px 0;background:#000;position:relative;box-shadow:inset 0 0 25px #000}
-.gif-container img{width:100%;height:100%;object-fit:cover;filter:contrast(1.3) brightness(0.9) saturate(1.4)}
-.gif-glitch{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,0,40,.12) 0 2px,transparent 2px 4px);pointer-events:none}
-.callbox h2{color:var(--red);letter-spacing:.16em;margin:4px 0;font-size:1.4rem;text-align:center}
-.callbox p{color:#d9cbd3;line-height:1.4;font-size:.88rem;margin:4px 0;text-align:center}
-#endCall{width:100%;background:#a00024;border-color:#ff5473;margin-top:8px;font-weight:bold;letter-spacing:.08em;padding:14px;font-size:0.95rem}
-#sceneLabel{color:var(--green);font-size:.72rem;letter-spacing:.16em;text-align:center}
 
-/* INTENSE LIGHT FLICKER EFFECT */
-.flicker-screen{animation:horrorFlicker 0.12s infinite alternate}
+.callbox{
+  width:min(500px,100%);
+  border:1px solid var(--red);
+  border-radius:20px;
+  padding:22px 18px;
+  background:linear-gradient(165deg,#1a020a 0%,#050208 50%,#0a0005 100%);
+  box-shadow:0 0 80px #8b001d,0 0 120px rgba(255,0,40,.15);
+  position:relative;overflow:hidden;
+}
+.callbox::before{
+  content:"";position:absolute;inset:-2px;
+  background:linear-gradient(45deg,#ff1744,#7d001b,#ff0033,#ff1744);
+  background-size:300% 300%;
+  z-index:-1;border-radius:22px;
+  animation:borderFlow 4s linear infinite;
+  opacity:.55;
+}
+@keyframes borderFlow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
+/* LIVING HORROR EYE (CSS) */
+.living-eye{
+  width:110px;height:110px;margin:0 auto 12px;
+  position:relative;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,#1a0005 0%,#000 70%);
+  box-shadow:0 0 30px #ff0033,inset 0 0 25px #300010;
+  animation:eyeFloat 3.5s ease-in-out infinite;
+}
+.living-eye .iris{
+  position:absolute;top:50%;left:50%;
+  width:48px;height:48px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#ff3355,#aa0018 60%,#300008);
+  box-shadow:0 0 18px #ff1744;
+  animation:irisMove 4s ease-in-out infinite;
+}
+.living-eye .pupil{
+  position:absolute;top:50%;left:50%;
+  width:18px;height:18px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#000;
+  box-shadow:0 0 8px #000;
+}
+.living-eye .lid{
+  position:absolute;inset:0;border-radius:50%;
+  background:#0a0005;
+  transform-origin:center top;
+  animation:blink 4.8s ease-in-out infinite;
+}
+@keyframes eyeFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+@keyframes irisMove{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  25%{transform:translate(-42%,-55%) scale(1.05)}
+  50%{transform:translate(-58%,-48%) scale(.95)}
+  75%{transform:translate(-48%,-52%) scale(1.08)}
+}
+@keyframes blink{
+  0%,92%,100%{transform:scaleY(0)}
+  94%,96%{transform:scaleY(1)}
+}
+
+.ascii-eye{
+  font-family:monospace;font-size:11px;line-height:1.05;
+  color:#ff1744;text-shadow:0 0 12px #ff002b,0 0 25px #ff002b;
+  margin:0 auto 8px;white-space:pre;user-select:none;font-weight:bold;
+  animation:eyeGlitch 5s steps(1) infinite;
+}
+@keyframes eyeGlitch{
+  0%,90%,100%{opacity:1;filter:none}
+  92%{opacity:.3;filter:hue-rotate(90deg)}
+  94%{opacity:1;filter:none}
+  96%{opacity:.6;filter:hue-rotate(-40deg) brightness(1.5)}
+}
+
+.gif-container{
+  width:100%;height:200px;
+  border-radius:12px;overflow:hidden;
+  border:1px solid #8e102c;
+  margin:12px 0;background:#000;
+  position:relative;
+  box-shadow:inset 0 0 30px #000,0 0 25px rgba(255,0,40,.2);
+}
+.gif-container img{
+  width:100%;height:100%;object-fit:cover;
+  filter:contrast(1.3) brightness(.8) saturate(1.4);
+  animation:gifPulse 4s ease-in-out infinite;
+}
+@keyframes gifPulse{
+  0%,100%{filter:contrast(1.3) brightness(.8) saturate(1.4)}
+  50%{filter:contrast(1.55) brightness(.95) saturate(1.8) hue-rotate(-8deg)}
+}
+.gif-glitch{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(255,0,40,.12) 0 2px,transparent 2px 5px);
+  pointer-events:none;
+  animation:glitchScan 1.8s linear infinite;
+}
+@keyframes glitchScan{to{background-position:0 20px}}
+
+.callbox h2{
+  color:var(--red);letter-spacing:.18em;margin:10px 0;font-size:1.35rem;
+  text-shadow:0 0 20px #ff1744;
+  animation:callTitle 2.5s ease-in-out infinite;
+}
+@keyframes callTitle{
+  0%,100%{text-shadow:0 0 15px #ff1744}
+  50%{text-shadow:0 0 30px #ff0033,0 0 50px #ff1744}
+}
+.callbox p{
+  color:#e0d0d8;line-height:1.55;font-size:.88rem;margin:8px 0;
+  min-height:48px;
+  animation:dialogueFade 3.5s ease-in-out infinite;
+}
+@keyframes dialogueFade{
+  0%,100%{opacity:.85}
+  50%{opacity:1}
+}
+
+#endCall{
+  width:100%;background:linear-gradient(90deg,#7a0018,#c00030);
+  border-color:#ff5473;margin-top:14px;font-weight:bold;
+  letter-spacing:.1em;padding:14px;font-size:.95rem;
+}
+#endCall:not(:disabled){
+  background:linear-gradient(90deg,#a00024,#ff1744);
+  animation:endReady 1.2s ease-in-out infinite;
+}
+@keyframes endReady{
+  0%,100%{box-shadow:0 0 15px rgba(255,20,60,.3)}
+  50%{box-shadow:0 0 30px rgba(255,20,60,.7)}
+}
+#sceneLabel{
+  color:var(--green);font-size:.72rem;letter-spacing:.18em;
+  animation:labelBlink 1.8s steps(2) infinite;
+}
+@keyframes labelBlink{50%{opacity:.4}}
+
+/* LIGHT FLICKER */
+.flicker-screen{animation:horrorFlicker .13s infinite alternate}
 @keyframes horrorFlicker{
   0%{filter:brightness(1) contrast(1);background-color:#050307}
-  20%{filter:brightness(2.4) contrast(1.9) hue-rotate(-20deg);background-color:#33000b}
-  40%{filter:brightness(0.25) contrast(2.2);background-color:#000000}
-  60%{filter:brightness(2.0) invert(0.15);background-color:#240008}
-  80%{filter:brightness(0.6) contrast(1.5);background-color:#0a0103}
-  100%{filter:brightness(1.5) contrast(1.7);background-color:#1a0004}
+  20%{filter:brightness(2.4) contrast(1.9) hue-rotate(-20deg);background-color:#2b0009}
+  40%{filter:brightness(.25) contrast(2.2);background-color:#000}
+  60%{filter:brightness(1.9) invert(.1);background-color:#1f0006}
+  80%{filter:brightness(.7) contrast(1.5) hue-rotate(10deg);background-color:#120008}
+  100%{filter:brightness(1.1) contrast(1.3);background-color:#050307}
 }
-@media(max-width:520px){header{min-height:64vh}.card{padding:17px}.soundlist button{padding:9px 5px;font-size:.7rem}.ascii-eye{font-size:9.5px}.callbox{max-height:96vh;padding:12px}}
+
+/* ========== MOBILE FULLSCREEN CALL ========== */
+@media(max-width:540px){
+  header{min-height:66vh}
+  .card{padding:18px}
+  .soundlist button{padding:10px 6px;font-size:.72rem}
+  .ascii-eye{font-size:9px}
+  #callOverlay{padding:0}
+  .callbox{
+    width:100%;height:100%;max-width:100%;
+    border-radius:0;border:none;padding:18px 14px 28px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .living-eye{width:95px;height:95px}
+  .gif-container{
+    height:48vh;min-height:260px;max-height:54vh;
+    margin:10px 0 14px;border-radius:10px;
+  }
+  .callbox h2{font-size:1.2rem}
+  .callbox p{font-size:.84rem}
+}
 </style>
 </head>
 <body>
-<canvas id="scene" aria-hidden="true"></canvas>
-<header>
- <div class="hero">
-  <div class="sigil">◉</div>
-  <h1>666 CURSED SIGNAL</h1>
-  <div class="subtitle">SHADOW JOKER • THE HAUNTED FREQUENCY</div>
-  <p class="tag">THE SHADOWS ARE WATCHING — ENTER IF YOU WISH</p>
- </div>
-</header>
-<main>
- <div class="grid">
-  <!-- ১. কার্সড হটলাইন কল সিমুলেটর -->
-  <section class="card">
-   <h2>☎ CURSED HOTLINE</h2>
-   <p class="muted">একটি কাল্পনিক হরর কল ও সিকিউরিটি সিমুলেশন।</p>
-   <div class="display"><div class="number" id="dialDisplay">666</div><div class="status" id="status">SYSTEM STANDBY</div></div>
-   <div class="keypad">
-    <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
-    <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
-    <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
-    <button data-key="*">*</button><button data-key="0">0</button><button id="clear">CLEAR</button>
-   </div>
-   <div class="actions"><button class="primary" id="callBtn">☏ START HORROR CALL</button><button class="secondary" id="stopBtn">■ STOP</button></div>
-   <div class="monster-status"><span>SIMULATION MODE</span><span id="vibeState">VIBRATION: OFF</span></div>
-  </section>
 
-  <!-- ২. SHADOW JOKER রিকভারি সার্ভিস ও হোয়াটসঅ্যাপ যোগাযোগ প্যানেল -->
-  <section class="card">
-   <h2>🛠️ SHADOW JOKER SERVICES</h2>
-   <p class="muted">ডিজিটাল ও অনলাইন সিকিউরিটি সমস্যা সমাধানে আমাদের অফিশিয়াল সার্ভিস:</p>
-   <ul class="service-list">
-    <li>ডিজেবল ফেসবুক আইডি রিকভারি <span>ACTIVE</span></li>
-    <li>নষ্ট বা ব্যানড হোয়াটসঅ্যাপ রিকভারি <span>ACTIVE</span></li>
-    <li>জিমেইল অ্যাকাউন্ট রিকভারি <span>SECURE</span></li>
-    <li>অনলাইন যেকোনো সিকিউরিটি সমস্যা <span>24/7 SUPPORT</span></li>
-   </ul>
-   <a href="https://wa.me/" target="_blank" class="whatsapp-btn">
-    💬 হোয়াটসঅ্যাপে মেসেজ দিন (WhatsApp)
-   </a>
-  </section>
-
-  <!-- ৩. আপনার নিজস্ব অডিও ফাইলগুলোর সাউন্ড চেম্বার -->
-  <section class="card">
-   <h2>♫ HORROR SOUND CHAMBER</h2>
-   <p class="muted">আপনার আপলোড করা রিয়েল হরর অডিও ফাইলগুলো এখান থেকে প্লে করুন।</p>
-   <div class="soundlist">
-    <button data-sound="aahat">👻 Aahat Horror Ringtone</button>
-    <button data-sound="chudail">😈 Chudail Ki Hasne Wali</button>
-    <button data-sound="payal">🔔 Payal Horror Ringtone</button>
-    <button data-sound="newhorror">💀 New Horror Ringtone</button>
-    <button class="wide" id="musicToggle">♫ Background Ambience: OFF</button>
-   </div>
-   <label class="level">VOLUME <input id="volume" type="range" min="0" max="100" value="80"><span id="volValue">80%</span></label>
-  </section>
-
-  <!-- ৪. লাইভ এনটিটি ফিল্ড -->
-  <section class="card">
-   <h2>◈ LIVE ENTITY FIELD</h2>
-   <p class="muted">ক্যানভাসে ১২টি আলাদা ছায়ামূর্তি, চোখের ঝলক ও প্রতীক ঘুরে বেড়ায় রহস্যময় আবহ তৈরি করতে।</p>
-   <div class="display"><div class="number" style="font-size:1.6rem;letter-spacing:.12em">12 ENTITIES</div><div class="status" id="entityStatus">FIELD ACTIVE</div></div>
-   <button id="fxToggle" style="width:100%">PAUSE / RESUME VISUAL FX</button>
-  </section>
- </div>
-</main>
-<footer>
- <div class="credit">CREATED & POWERED BY <b>SHADOW JOKER</b></div>
- <p>FICTIONAL HORROR EXPERIENCE • EXIT IS ALWAYS AVAILABLE</p>
-</footer>
-
-<!-- ফুল স্ক্রিন ইনকামিং কল ওভারলে -->
-<div id="callOverlay" role="dialog" aria-modal="true" aria-labelledby="callTitle">
- <div class="callbox">
-  <div>
-   <pre class="ascii-eye" id="asciiEye"></pre>
-   <div id="sceneLabel">INCOMING SIGNAL DETECTED</div>
-  </div>
-  <div class="gif-container">
-   <img id="horrorGif" src="https://giphy.com/gifs/art-horror-loop-l4FGmk6EVlfzvGscE" alt="Horror Entity">
-   <div class="gif-glitch"></div>
-  </div>
-  <div>
-   <h2 id="callTitle">666 — CONNECTED</h2>
-   <p id="callDialogue">“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”</p>
-   <button id="endCall" disabled>🔒 SYSTEM LOCKED (60s)</button>
-  </div>
- </div>
+<!-- ACID / HORROR BACKGROUND GIF -->
+<div id="bgHorror">
+  <img src="https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif" alt="Horror BG" id="bgGif">
 </div>
 
-<!-- অডিও সোর্স -->
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<header>
+  <div class="hero">
+    <div class="sigil">◉</div>
+    <h1>666 CURSED SIGNAL</h1>
+    <div class="subtitle">SHADOW JOKER • THE HAUNTED FREQUENCY</div>
+    <p class="tag">THE SHADOWS ARE WATCHING — ENTER IF YOU WISH</p>
+  </div>
+</header>
+
+<main>
+  <div class="grid">
+    <!-- 1. CURSED HOTLINE -->
+    <section class="card">
+      <h2>☎ CURSED HOTLINE</h2>
+      <p class="muted">একটি কাল্পনিক হরর কল ও সিকিউরিটি সিমুলেশন।</p>
+      <div class="display">
+        <div class="number" id="dialDisplay">666</div>
+        <div class="status" id="status">SYSTEM STANDBY</div>
+      </div>
+      <div class="keypad">
+        <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+        <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+        <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+        <button data-key="*">*</button><button data-key="0">0</button><button id="clear">CLEAR</button>
+      </div>
+      <div class="actions">
+        <button class="primary" id="callBtn">☏ START HORROR CALL</button>
+        <button class="secondary" id="stopBtn">■ STOP</button>
+      </div>
+      <div class="monster-status">
+        <span>SIMULATION MODE</span>
+        <span id="vibeState">VIBRATION: OFF</span>
+      </div>
+    </section>
+
+    <!-- 2. SERVICES -->
+    <section class="card">
+      <h2>🛠️ SHADOW JOKER SERVICES</h2>
+      <p class="muted">ডিজিটাল ও অনলাইন সিকিউরিটি সমস্যা সমাধানে আমাদের অফিশিয়াল সার্ভিস:</p>
+      <ul class="service-list">
+        <li>ডিজেবল ফেসবুক আইডি রিকভারি <span>ACTIVE</span></li>
+        <li>নষ্ট বা ব্যানড হোয়াটসঅ্যাপ রিকভারি <span>ACTIVE</span></li>
+        <li>জিমেইল অ্যাকাউন্ট রিকভারি <span>SECURE</span></li>
+        <li>অনলাইন যেকোনো সিকিউরিটি সমস্যা <span>24/7 SUPPORT</span></li>
+      </ul>
+      <a href="https://wa.me/" target="_blank" class="whatsapp-btn">
+        💬 হোয়াটসঅ্যাপে মেসেজ দিন (WhatsApp)
+      </a>
+    </section>
+
+    <!-- 3. SOUND CHAMBER -->
+    <section class="card">
+      <h2>♫ HORROR SOUND CHAMBER</h2>
+      <p class="muted">আপনার আপলোড করা রিয়েল হরর অডিও ফাইলগুলো এখান থেকে প্লে করুন।</p>
+      <div class="soundlist">
+        <button data-sound="aahat">👻 Aahat Horror Ringtone</button>
+        <button data-sound="chudail">😈 Chudail Ki Hasne Wali</button>
+        <button data-sound="payal">🔔 Payal Horror Ringtone</button>
+        <button data-sound="newhorror">💀 New Horror Ringtone</button>
+        <button class="wide" id="musicToggle">♫ Background Ambience: OFF</button>
+      </div>
+      <label class="level">
+        VOLUME <input id="volume" type="range" min="0" max="100" value="80">
+        <span id="volValue">80%</span>
+      </label>
+    </section>
+
+    <!-- 4. ENTITY FIELD -->
+    <section class="card">
+      <h2>◈ LIVE ENTITY FIELD</h2>
+      <p class="muted">ক্যানভাসে ১২টি আলাদা ছায়ামূর্তি, চোখের ঝলক ও প্রতীক ঘুরে বেড়ায় রহস্যময় আবহ তৈরি করতে।</p>
+      <div class="display">
+        <div class="number" style="font-size:1.65rem;letter-spacing:.14em">12 ENTITIES</div>
+        <div class="status" id="entityStatus">FIELD ACTIVE</div>
+      </div>
+      <button id="fxToggle" style="width:100%">PAUSE / RESUME VISUAL FX</button>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="credit">CREATED & POWERED BY <b>SHADOW JOKER</b></div>
+  <p style="margin-top:14px">FICTIONAL HORROR EXPERIENCE • EXIT IS ALWAYS AVAILABLE</p>
+</footer>
+
+<!-- CALL OVERLAY -->
+<div id="callOverlay" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+  <div class="callbox">
+    <!-- Living CSS Eye -->
+    <div class="living-eye">
+      <div class="iris"><div class="pupil"></div></div>
+      <div class="lid"></div>
+    </div>
+
+    <pre class="ascii-eye" id="asciiEye"></pre>
+    <div id="sceneLabel">INCOMING SIGNAL DETECTED</div>
+
+    <div class="gif-container">
+      <img id="horrorGif" src="https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif" alt="Horror Entity">
+      <div class="gif-glitch"></div>
+    </div>
+
+    <h2 id="callTitle">666 — CONNECTED</h2>
+    <p id="callDialogue">“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”</p>
+    <button id="endCall" disabled>🔒 SYSTEM LOCKED (60s)</button>
+  </div>
+</div>
+
+<!-- AUDIO -->
 <audio id="audioAahat" preload="auto" src="./Aahat_Horror_Ringtone.mp3.mp3"></audio>
 <audio id="audioChudail" preload="auto" src="./CHUDAIL_KI_HASNE_WALI.mp3.mp3"></audio>
 <audio id="audioPayal" preload="auto" src="./horror_ringtone___payal.mp3.mp3"></audio>
@@ -170,245 +629,377 @@ footer{text-align:center;border-top:1px solid #7d1029;padding:28px 12px 38px;col
 
 <script>
 (() => {
- 'use strict';
- const $ = id => document.getElementById(id);
+  'use strict';
+  const $ = id => document.getElementById(id);
 
- /* === ব্যাকগ্রাউন্ড ক্যানভাস অ্যানিমেশন === */
- const canvas=$('scene'), ctx=canvas.getContext('2d');
- let W=0,H=0,raf=0,visualOn=true,frame=0;
- const rand=(a,b)=>Math.random()*(b-a)+a;
- const entities=Array.from({length:12},(_,i)=>({x:rand(.04,.96),y:rand(.12,.94),s:rand(.55,1.45),phase:rand(0,6.28),speed:rand(.15,.55),kind:i%4}));
- const motes=Array.from({length:90},()=>({x:Math.random(),y:Math.random(),r:rand(.5,2),v:rand(.00015,.00065),a:rand(.15,.65)}));
- function resize(){const d=Math.min(devicePixelRatio||1,1.7);W=innerWidth;H=innerHeight;canvas.width=Math.floor(W*d);canvas.height=Math.floor(H*d);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(d,0,0,d,0,0)}
- addEventListener('resize',resize);resize();
- function drawEntity(e,t){
-  const x=e.x*W+Math.sin(t*e.speed+e.phase)*18, y=e.y*H+Math.cos(t*.35+e.phase)*13, s=e.s;
-  ctx.save();ctx.translate(x,y);ctx.scale(s,s);
-  const g=ctx.createRadialGradient(0,-15,4,0,0,76);g.addColorStop(0,'rgba(75,0,22,.55)');g.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,0,76,105,0,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='rgba(1,0,3,.91)';ctx.strokeStyle='rgba(120,0,29,.38)';ctx.lineWidth=2;
-  if(e.kind===0){
-   ctx.beginPath();ctx.moveTo(-42,75);ctx.quadraticCurveTo(-58,-20,-22,-61);ctx.quadraticCurveTo(0,-91,27,-59);ctx.quadraticCurveTo(58,-10,43,75);ctx.quadraticCurveTo(0,99,-42,75);ctx.fill();ctx.stroke();
-   ctx.fillStyle='#ff183e';ctx.shadowColor='#ff002b';ctx.shadowBlur=14;ctx.fillRect(-19,-28,10,4);ctx.fillRect(10,-28,10,4);
-  } else if(e.kind===1){
-   ctx.beginPath();ctx.moveTo(-42,-22);ctx.lineTo(-67,-72);ctx.lineTo(-25,-52);ctx.quadraticCurveTo(0,-82,25,-52);ctx.lineTo(67,-72);ctx.lineTo(42,-18);ctx.lineTo(35,58);ctx.quadraticCurveTo(0,83,-35,58);ctx.closePath();ctx.fill();ctx.stroke();
-   ctx.fillStyle='#ff3b55';ctx.shadowColor='#f03';ctx.shadowBlur=12;ctx.fillRect(-23,-17,13,5);ctx.fillRect(10,-17,13,5);
-  } else if(e.kind===2){
-   ctx.beginPath();ctx.moveTo(-34,-50);ctx.quadraticCurveTo(0,-90,34,-50);ctx.lineTo(48,30);ctx.lineTo(24,18);ctx.lineTo(18,90);ctx.lineTo(0,55);ctx.lineTo(-20,91);ctx.lineTo(-24,18);ctx.lineTo(-48,35);ctx.closePath();ctx.fill();ctx.stroke();
-   ctx.fillStyle='#9dfcff';ctx.shadowColor='#72f7ff';ctx.shadowBlur=10;ctx.fillRect(-17,-28,8,4);ctx.fillRect(9,-28,8,4);
-  } else {
-   ctx.beginPath();ctx.ellipse(0,-14,38,47,0,0,Math.PI*2);ctx.fill();ctx.fillRect(-28,18,56,44);
-   ctx.fillStyle='#ff2148';ctx.shadowColor='#f03';ctx.shadowBlur=14;ctx.beginPath();ctx.ellipse(-14,-15,8,12,0,0,Math.PI*2);ctx.ellipse(14,-15,8,12,0,0,Math.PI*2);ctx.fill();
-   ctx.shadowBlur=0;ctx.fillStyle='#050307';ctx.fillRect(-17,29,34,8);
+  /* ===== BACKGROUND GIF ROTATION (ACID STYLE) ===== */
+  const bgGifs = [
+    "https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif",
+    "https://media.giphy.com/media/3oKIPc8HP4TjyykkKc/giphy.gif",
+    "https://media.giphy.com/media/cYqhkF6jUFXvHfnOt4/giphy.gif",
+    "https://media.giphy.com/media/RpiTpzfosgJyaWH63N/giphy.gif"
+  ];
+  let bgIdx = 0;
+  setInterval(() => {
+    bgIdx = (bgIdx + 1) % bgGifs.length;
+    const img = $('bgGif');
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = bgGifs[bgIdx];
+      img.style.opacity = '.18';
+    }, 600);
+  }, 14000);
+
+  /* ===== CANVAS ENTITIES (MORE ALIVE) ===== */
+  const canvas = $('scene'), ctx = canvas.getContext('2d');
+  let W = 0, H = 0, raf = 0, visualOn = true, frame = 0;
+  const rand = (a,b) => Math.random()*(b-a)+a;
+
+  const entities = Array.from({length:14}, (_,i) => ({
+    x: rand(.03,.97), y: rand(.1,.95),
+    s: rand(.5,1.55), phase: rand(0,6.28),
+    speed: rand(.12,.6), kind: i % 5,
+    pulse: rand(0.8,1.4)
+  }));
+
+  const motes = Array.from({length:110}, () => ({
+    x: Math.random(), y: Math.random(),
+    r: rand(.4,2.2), v: rand(.00012,.0007),
+    a: rand(.12,.7)
+  }));
+
+  function resize(){
+    const d = Math.min(devicePixelRatio || 1, 1.8);
+    W = innerWidth; H = innerHeight;
+    canvas.width = Math.floor(W * d);
+    canvas.height = Math.floor(H * d);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(d, 0, 0, d, 0, 0);
   }
-  ctx.restore();
- }
- function render(){
-  if(!visualOn){raf=requestAnimationFrame(render);return}
-  frame++;const t=frame/60;ctx.clearRect(0,0,W,H);
-  const bg=ctx.createRadialGradient(W*.5,H*.5,0,W*.5,H*.5,Math.max(W,H)*.7);bg.addColorStop(0,'rgba(32,0,12,.14)');bg.addColorStop(1,'rgba(0,0,0,.1)');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-  motes.forEach(p=>{p.y-=p.v*60;if(p.y<0)p.y=1;ctx.globalAlpha=p.a;ctx.fillStyle='#ff244c';ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r,0,7);ctx.fill()});ctx.globalAlpha=1;
-  entities.forEach(e=>drawEntity(e,t));
-  ctx.save();ctx.translate(W/2,H*.53);ctx.rotate(t*.12);ctx.strokeStyle='rgba(255,25,66,.15)';ctx.lineWidth=1;
-  const r=Math.min(W,H)*.22;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.86,r*.5);ctx.lineTo(-r*.86,r*.5);ctx.closePath();ctx.stroke();
-  ctx.beginPath();ctx.arc(0,0,r*.55,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.ellipse(0,0,r*.42,r*.19,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(255,20,60,.35)';ctx.beginPath();ctx.arc(0,0,4+Math.sin(t*2)*2,0,7);ctx.fill();ctx.restore();
-  raf=requestAnimationFrame(render);
- }
- render();
+  addEventListener('resize', resize);
+  resize();
 
- /* === ASCII রিয়েল কোডিং চোখ অ্যানিমেশন === */
- const eyeFrames = [
-`      . - ~ ~ ~ - .
+  function drawEntity(e, t){
+    const x = e.x * W + Math.sin(t * e.speed + e.phase) * 22;
+    const y = e.y * H + Math.cos(t * .32 + e.phase) * 16;
+    const s = e.s * (1 + Math.sin(t * e.pulse) * .08);
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(s, s);
+
+    const g = ctx.createRadialGradient(0, -18, 3, 0, 0, 80);
+    g.addColorStop(0, 'rgba(90,0,25,.6)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 80, 110, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = 'rgba(2,0,4,.93)';
+    ctx.strokeStyle = 'rgba(140,0,35,.42)';
+    ctx.lineWidth = 2;
+
+    if (e.kind === 0){
+      ctx.beginPath();
+      ctx.moveTo(-44,78); ctx.quadraticCurveTo(-60,-22,-24,-64);
+      ctx.quadraticCurveTo(0,-95,28,-62); ctx.quadraticCurveTo(60,-12,45,78);
+      ctx.quadraticCurveTo(0,104,-44,78); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#ff183e'; ctx.shadowColor = '#ff002b'; ctx.shadowBlur = 16;
+      ctx.fillRect(-20,-30,11,5); ctx.fillRect(10,-30,11,5);
+    } else if (e.kind === 1){
+      ctx.beginPath();
+      ctx.moveTo(-44,-24); ctx.lineTo(-70,-76); ctx.lineTo(-26,-54);
+      ctx.quadraticCurveTo(0,-86,26,-54); ctx.lineTo(70,-76); ctx.lineTo(44,-20);
+      ctx.lineTo(37,60); ctx.quadraticCurveTo(0,86,-37,60); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#ff3b55'; ctx.shadowColor = '#f03'; ctx.shadowBlur = 14;
+      ctx.fillRect(-24,-18,14,6); ctx.fillRect(11,-18,14,6);
+    } else if (e.kind === 2){
+      ctx.beginPath();
+      ctx.moveTo(-36,-52); ctx.quadraticCurveTo(0,-94,36,-52);
+      ctx.lineTo(50,32); ctx.lineTo(26,20); ctx.lineTo(20,94);
+      ctx.lineTo(0,58); ctx.lineTo(-22,95); ctx.lineTo(-26,20);
+      ctx.lineTo(-50,37); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#9dfcff'; ctx.shadowColor = '#72f7ff'; ctx.shadowBlur = 12;
+      ctx.fillRect(-18,-30,9,5); ctx.fillRect(10,-30,9,5);
+    } else if (e.kind === 3){
+      ctx.beginPath();
+      ctx.ellipse(0,-16,40,50,0,0,Math.PI*2); ctx.fill();
+      ctx.fillRect(-30,20,60,48);
+      ctx.fillStyle = '#ff2148'; ctx.shadowColor = '#f03'; ctx.shadowBlur = 16;
+      ctx.beginPath(); ctx.ellipse(-15,-16,9,13,0,0,Math.PI*2);
+      ctx.ellipse(15,-16,9,13,0,0,Math.PI*2); ctx.fill();
+      ctx.shadowBlur = 0; ctx.fillStyle = '#050307';
+      ctx.fillRect(-18,32,36,9);
+    } else {
+      // more abstract shadow
+      ctx.beginPath();
+      ctx.moveTo(0,-70); ctx.quadraticCurveTo(50,-30,40,40);
+      ctx.quadraticCurveTo(0,90,-40,40); ctx.quadraticCurveTo(-50,-30,0,-70);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#ff1744'; ctx.shadowColor = '#ff0033'; ctx.shadowBlur = 18;
+      ctx.beginPath(); ctx.arc(-12,-20,7,0,7); ctx.arc(12,-20,7,0,7); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function render(){
+    if (!visualOn){ raf = requestAnimationFrame(render); return; }
+    frame++;
+    const t = frame / 60;
+    ctx.clearRect(0,0,W,H);
+
+    const bg = ctx.createRadialGradient(W*.5, H*.5, 0, W*.5, H*.5, Math.max(W,H)*.75);
+    bg.addColorStop(0, 'rgba(40,0,15,.16)');
+    bg.addColorStop(1, 'rgba(0,0,0,.12)');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,W,H);
+
+    motes.forEach(p => {
+      p.y -= p.v * 60;
+      if (p.y < 0) p.y = 1;
+      ctx.globalAlpha = p.a * (0.7 + Math.sin(t*2 + p.x*10)*.3);
+      ctx.fillStyle = '#ff244c';
+      ctx.beginPath();
+      ctx.arc(p.x * W, p.y * H, p.r, 0, 7);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+
+    entities.forEach(e => drawEntity(e, t));
+
+    // central sigil
+    ctx.save();
+    ctx.translate(W/2, H*.52);
+    ctx.rotate(t * .11);
+    ctx.strokeStyle = 'rgba(255,25,66,.18)';
+    ctx.lineWidth = 1.2;
+    const r = Math.min(W,H) * .21;
+    ctx.beginPath();
+    ctx.moveTo(0,-r); ctx.lineTo(r*.87,r*.5); ctx.lineTo(-r*.87,r*.5);
+    ctx.closePath(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,0,r*.52,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(0,0,r*.4,r*.18,0,0,Math.PI*2); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,20,60,.4)';
+    ctx.beginPath();
+    ctx.arc(0,0,5 + Math.sin(t*2.2)*2.5,0,7);
+    ctx.fill();
+    ctx.restore();
+
+    raf = requestAnimationFrame(render);
+  }
+  render();
+
+  /* ===== ASCII EYE ===== */
+  const eyeFrames = [
+`      . - \~ \~ \~ - .
    .-'   _ . - . _   '-.
   /    .'  _..._  '.    \\
  |    /   ( (O) )   \\    |
   \\   '.   '...'   .'   /
    '-.   ' - . - '   .-'
       ' - . _ . - '`,
-`      . - ~ ~ ~ - .
+`      . - \~ \~ \~ - .
    .-'   _ . - . _   '-.
   /    .'  _..._  '.    \\
  |    /   ( (◉) )   \\    |
   \\   '.   '...'   .'   /
    '-.   ' - . - '   .-'
       ' - . _ . - '`,
-`      . - ~ ~ ~ - .
+`      . - \~ \~ \~ - .
    .-'               '-.
   /  =================  \\
  |  ===================  |
   \\  =================  /
    '-.               .-'
       ' - . _ . - '`
- ];
- let eyeIndex = 0;
- $('asciiEye').textContent = eyeFrames[0];
- setInterval(() => {
-  if(!$('callOverlay').classList.contains('active')) return;
-  eyeIndex = (eyeIndex + 1) % eyeFrames.length;
-  $('asciiEye').textContent = eyeFrames[eyeIndex];
- }, 450);
+  ];
+  let eyeIndex = 0;
+  $('asciiEye').textContent = eyeFrames[0];
+  setInterval(() => {
+    if (!$('callOverlay').classList.contains('active')) return;
+    eyeIndex = (eyeIndex + 1) % eyeFrames.length;
+    $('asciiEye').textContent = eyeFrames[eyeIndex];
+  }, 420);
 
- /* === অডিও সিস্টেম ও ফলব্যাক সিন্থ === */
- const audios=[$('audioAahat'), $('audioChudail'), $('audioPayal'), $('audioNewHorror')];
- let masterVolume=.80;
- let audioCtx=null, synthOsc=null;
+  /* ===== AUDIO ===== */
+  const audios = [$('audioAahat'), $('audioChudail'), $('audioPayal'), $('audioNewHorror')];
+  let masterVolume = .80;
+  let audioCtx = null, synthOsc = null;
 
- function playFallbackDrone(){
-  try{
-   if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-   if(audioCtx.state === 'suspended') audioCtx.resume();
-   stopFallbackDrone();
-   const osc1 = audioCtx.createOscillator();
-   const osc2 = audioCtx.createOscillator();
-   const gain = audioCtx.createGain();
-   osc1.type = 'sawtooth';
-   osc1.frequency.setValueAtTime(55, audioCtx.currentTime);
-   osc2.type = 'sine';
-   osc2.frequency.setValueAtTime(58.5, audioCtx.currentTime);
-   gain.gain.setValueAtTime(masterVolume * 0.25, audioCtx.currentTime);
-   osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination);
-   osc1.start(); osc2.start();
-   synthOsc = {osc1, osc2};
-  }catch(e){}
- }
- function stopFallbackDrone(){
-  if(synthOsc){try{synthOsc.osc1.stop();synthOsc.osc2.stop()}catch(e){} synthOsc=null;}
- }
-
- function stopAll(){
-  audios.forEach(a=>{a.pause();a.currentTime=0;a.loop=false});
-  stopFallbackDrone();
-  $('status').textContent='ALL AUDIO STOPPED';
-  $('musicToggle').textContent='♫ Background Ambience: OFF';
- }
-
- async function playAudio(audioEl, name, loop=false){
-  stopAll();
-  audioEl.volume = masterVolume;
-  audioEl.loop = loop;
-  try{
-   await audioEl.play();
-   $('status').textContent = 'PLAYING: ' + name;
-  }catch(e){
-   $('status').textContent = 'PLAYING HORROR FREQ: ' + name;
-   playFallbackDrone();
+  function playFallbackDrone(){
+    try{
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      stopFallbackDrone();
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc1.type = 'sawtooth';
+      osc1.frequency.setValueAtTime(52, audioCtx.currentTime);
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(55.5, audioCtx.currentTime);
+      gain.gain.setValueAtTime(masterVolume * 0.22, audioCtx.currentTime);
+      osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination);
+      osc1.start(); osc2.start();
+      synthOsc = {osc1, osc2};
+    }catch(e){}
   }
- }
-
- document.querySelectorAll('[data-key]').forEach(b=>b.addEventListener('click',()=>{let v=$('dialDisplay').textContent;if(v.length<12)$('dialDisplay').textContent=(v==='666'?'':v)+b.dataset.key}));
- $('clear').addEventListener('click',()=>$('dialDisplay').textContent='');
-
- document.querySelectorAll('[data-sound]').forEach(b=>b.addEventListener('click',()=>{
-  const s=b.dataset.sound;
-  if(s==='aahat') playAudio($('audioAahat'), 'Aahat Horror Ringtone');
-  else if(s==='chudail') playAudio($('audioChudail'), 'Chudail Ki Hasne Wali');
-  else if(s==='payal') playAudio($('audioPayal'), 'Payal Ringtone');
-  else if(s==='newhorror') playAudio($('audioNewHorror'), 'New Horror Ringtone');
- }));
-
- $('musicToggle').addEventListener('click',async()=>{
-  const a=$('audioNewHorror');
-  if(!a.paused){
-   stopAll();
-  }else{
-   await playAudio(a, 'Haunted Ambience', true);
-   $('musicToggle').textContent='♫ Background Ambience: ON';
-  }
- });
-
- $('volume').addEventListener('input',e=>{masterVolume=Number(e.target.value)/100;$('volValue').textContent=e.target.value+'%';audios.forEach(a=>a.volume=masterVolume)});
- $('stopBtn').addEventListener('click',stopAll);
-
- /* === কল, জিফি রোটেশন, ভাইব্রেশন, ফ্লিকার এবং ১ মিনিটের লক সিস্টেম === */
- const horrorGifs = [
-  "https://giphy.com/gifs/art-horror-loop-l4FGmk6EVlfzvGscE",
-  "https://giphy.com/gifs/art-horror-loop-3oKIPc8HP4TjyykkKc",
-  "https://giphy.com/gifs/scary-ghost-spooky-cYqhkF6jUFXvHfnOt4",
-  "https://giphy.com/gifs/amc-tv-amc-networks-fearfest-RpiTpzfosgJyaWH63N"
- ];
- const dialogues=[
-  '“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”',
-  '“তুমি পালাতে পারবে না... আমরা তোমাকে দেখছি।”',
-  '“সংযোগ বিচ্ছিন্ন করার চেষ্টা বৃথা... 666 সক্রিয়।”',
-  '“Shadow Joker সিকিউরিটি লাইনে আপনাকে স্বাগতম।”'
- ];
-
- let vibeTimer=null, dialogueTimer=null, gifTimer=null, lockTimer=null;
-
- function endCall(){
-  if($('endCall').disabled) return;
-  clearInterval(vibeTimer);
-  clearInterval(dialogueTimer);
-  clearInterval(gifTimer);
-  clearInterval(lockTimer);
-  if(navigator.vibrate) navigator.vibrate(0);
-  $('vibeState').textContent='VIBRATION: OFF';
-  $('callOverlay').classList.remove('active');
-  document.body.classList.remove('flicker-screen');
-  stopAll();
-  $('status').textContent='CALL ENDED — SAFE EXIT';
- }
-
- $('callBtn').addEventListener('click',()=>{
-  const overlay = $('callOverlay');
-  const endBtn = $('endCall');
-  overlay.classList.add('active');
-  document.body.classList.add('flicker-screen');
-  $('status').textContent='SIMULATED CALL CONNECTED';
-  $('callDialogue').textContent=dialogues[0];
-  $('horrorGif').src = horrorGifs[0];
-
-  playAudio($('audioChudail'), '666 Cursed Call', true);
-
-  if(navigator.vibrate){
-   navigator.vibrate([400, 150, 500, 200, 300]);
-   $('vibeState').textContent='VIBRATION: EXTREME';
-   clearInterval(vibeTimer);
-   vibeTimer = setInterval(()=>{
-    if(overlay.classList.contains('active')) navigator.vibrate([350, 120, 450, 150]);
-   }, 1300);
+  function stopFallbackDrone(){
+    if (synthOsc){
+      try{synthOsc.osc1.stop(); synthOsc.osc2.stop()}catch(e){}
+      synthOsc = null;
+    }
   }
 
-  let dIdx = 1;
-  clearInterval(dialogueTimer);
-  dialogueTimer = setInterval(()=>{
-   if(!overlay.classList.contains('active')) return;
-   $('callDialogue').textContent = dialogues[dIdx % dialogues.length];
-   dIdx++;
-  }, 3500);
+  function stopAll(){
+    audios.forEach(a => {a.pause(); a.currentTime = 0; a.loop = false});
+    stopFallbackDrone();
+    $('status').textContent = 'ALL AUDIO STOPPED';
+    $('musicToggle').textContent = '♫ Background Ambience: OFF';
+  }
 
-  let gIdx = 1;
-  clearInterval(gifTimer);
-  gifTimer = setInterval(()=>{
-   if(!overlay.classList.contains('active')) return;
-   $('horrorGif').src = horrorGifs[gIdx % horrorGifs.length];
-   gIdx++;
-  }, 3000);
+  async function playAudio(audioEl, name, loop = false){
+    stopAll();
+    audioEl.volume = masterVolume;
+    audioEl.loop = loop;
+    try{
+      await audioEl.play();
+      $('status').textContent = 'PLAYING: ' + name;
+    }catch(e){
+      $('status').textContent = 'PLAYING HORROR FREQ: ' + name;
+      playFallbackDrone();
+    }
+  }
 
-  /* ১ মিনিটের (৬০ সেকেন্ড) জন্য এন্ড বাটন লক সিস্টেম */
-  let lockSeconds = 60;
-  endBtn.disabled = true;
-  endBtn.textContent = `🔒 SYSTEM LOCKED (${lockSeconds}s)`;
-  clearInterval(lockTimer);
-  lockTimer = setInterval(()=>{
-   lockSeconds--;
-   if(lockSeconds > 0){
-    endBtn.textContent = `🔒 SYSTEM LOCKED (${lockSeconds}s)`;
-   } else {
+  document.querySelectorAll('[data-key]').forEach(b => b.addEventListener('click', () => {
+    let v = $('dialDisplay').textContent;
+    if (v.length < 12) $('dialDisplay').textContent = (v === '666' ? '' : v) + b.dataset.key;
+  }));
+  $('clear').addEventListener('click', () => $('dialDisplay').textContent = '');
+
+  document.querySelectorAll('[data-sound]').forEach(b => b.addEventListener('click', () => {
+    const s = b.dataset.sound;
+    if (s === 'aahat') playAudio($('audioAahat'), 'Aahat Horror Ringtone');
+    else if (s === 'chudail') playAudio($('audioChudail'), 'Chudail Ki Hasne Wali');
+    else if (s === 'payal') playAudio($('audioPayal'), 'Payal Ringtone');
+    else if (s === 'newhorror') playAudio($('audioNewHorror'), 'New Horror Ringtone');
+  }));
+
+  $('musicToggle').addEventListener('click', async () => {
+    const a = $('audioNewHorror');
+    if (!a.paused) stopAll();
+    else {
+      await playAudio(a, 'Haunted Ambience', true);
+      $('musicToggle').textContent = '♫ Background Ambience: ON';
+    }
+  });
+
+  $('volume').addEventListener('input', e => {
+    masterVolume = Number(e.target.value) / 100;
+    $('volValue').textContent = e.target.value + '%';
+    audios.forEach(a => a.volume = masterVolume);
+  });
+  $('stopBtn').addEventListener('click', stopAll);
+
+  /* ===== HORROR CALL ===== */
+  const horrorGifs = [
+    "https://media.giphy.com/media/l4FGmk6EVlfzvGscE/giphy.gif",
+    "https://media.giphy.com/media/3oKIPc8HP4TjyykkKc/giphy.gif",
+    "https://media.giphy.com/media/cYqhkF6jUFXvHfnOt4/giphy.gif",
+    "https://media.giphy.com/media/RpiTpzfosgJyaWH63N/giphy.gif"
+  ];
+  const dialogues = [
+    '“লাইনটির অপর প্রান্তে কেউ ফিসফিস করছে...”',
+    '“তুমি পালাতে পারবে না... আমরা তোমাকে দেখছি।”',
+    '“সংযোগ বিচ্ছিন্ন করার চেষ্টা বৃথা... 666 সক্রিয়।”',
+    '“Shadow Joker সিকিউরিটি লাইনে আপনাকে স্বাগতম।”',
+    '“ছায়াগুলো এখন তোমার পিছনে দাঁড়িয়ে আছে...”'
+  ];
+
+  let vibeTimer = null, dialogueTimer = null, gifTimer = null, lockTimer = null;
+
+  function endCall(){
+    if ($('endCall').disabled) return;
+    clearInterval(vibeTimer);
+    clearInterval(dialogueTimer);
+    clearInterval(gifTimer);
     clearInterval(lockTimer);
-    endBtn.disabled = false;
-    endBtn.textContent = '■ END CALL — EXIT SAFELY';
-   }
-  }, 1000);
- });
+    if (navigator.vibrate) navigator.vibrate(0);
+    $('vibeState').textContent = 'VIBRATION: OFF';
+    $('callOverlay').classList.remove('active');
+    document.body.classList.remove('flicker-screen');
+    stopAll();
+    $('status').textContent = 'CALL ENDED — SAFE EXIT';
+  }
 
- $('endCall').addEventListener('click', endCall);
- $('fxToggle').addEventListener('click',()=>{visualOn=!visualOn;$('entityStatus').textContent=visualOn?'FIELD ACTIVE':'FIELD PAUSED';if(visualOn)render()});
- addEventListener('pagehide',()=>{
-  clearInterval(vibeTimer);clearInterval(dialogueTimer);clearInterval(gifTimer);clearInterval(lockTimer);
-  if(navigator.vibrate)navigator.vibrate(0);
-  stopAll();cancelAnimationFrame(raf);
- });
+  $('callBtn').addEventListener('click', () => {
+    const overlay = $('callOverlay');
+    const endBtn = $('endCall');
+    overlay.classList.add('active');
+    document.body.classList.add('flicker-screen');
+    $('status').textContent = 'SIMULATED CALL CONNECTED';
+    $('callDialogue').textContent = dialogues[0];
+    $('horrorGif').src = horrorGifs[0];
+
+    playAudio($('audioChudail'), '666 Cursed Call', true);
+
+    if (navigator.vibrate){
+      navigator.vibrate([420, 160, 520, 200, 340]);
+      $('vibeState').textContent = 'VIBRATION: EXTREME';
+      clearInterval(vibeTimer);
+      vibeTimer = setInterval(() => {
+        if (overlay.classList.contains('active')) navigator.vibrate([360, 130, 480, 160]);
+      }, 1250);
+    }
+
+    let dIdx = 1;
+    clearInterval(dialogueTimer);
+    dialogueTimer = setInterval(() => {
+      if (!overlay.classList.contains('active')) return;
+      $('callDialogue').textContent = dialogues[dIdx % dialogues.length];
+      dIdx++;
+    }, 3400);
+
+    let gIdx = 1;
+    clearInterval(gifTimer);
+    gifTimer = setInterval(() => {
+      if (!overlay.classList.contains('active')) return;
+      $('horrorGif').src = horrorGifs[gIdx % horrorGifs.length];
+      gIdx++;
+    }, 2800);
+
+    // 60 SECOND LOCK
+    let lockSeconds = 60;
+    endBtn.disabled = true;
+    endBtn.textContent = `🔒 END CALL LOCKED (${lockSeconds}s)`;
+    clearInterval(lockTimer);
+    lockTimer = setInterval(() => {
+      lockSeconds--;
+      if (lockSeconds > 0){
+        endBtn.textContent = `🔒 END CALL LOCKED (${lockSeconds}s)`;
+      } else {
+        clearInterval(lockTimer);
+        endBtn.disabled = false;
+        endBtn.textContent = '■ END CALL — EXIT SAFELY';
+      }
+    }, 1000);
+  });
+
+  $('endCall').addEventListener('click', endCall);
+  $('fxToggle').addEventListener('click', () => {
+    visualOn = !visualOn;
+    $('entityStatus').textContent = visualOn ? 'FIELD ACTIVE' : 'FIELD PAUSED';
+    if (visualOn) render();
+  });
+
+  addEventListener('pagehide', () => {
+    clearInterval(vibeTimer); clearInterval(dialogueTimer);
+    clearInterval(gifTimer); clearInterval(lockTimer);
+    if (navigator.vibrate) navigator.vibrate(0);
+    stopAll(); cancelAnimationFrame(raf);
+  });
 })();
 </script>
 </body>
